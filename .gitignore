@@ -8,3 +8,4 @@ tmp/*
 !tmp/empty
 
 bower_components/
+assets/lib/
