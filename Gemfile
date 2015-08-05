@@ -13,6 +13,8 @@ gem "mysql2", "~> 0.3.18"
 gem "unicorn", "~> 4.9.0"
 gem "redis", "~> 3.2.1"
 
+gem "rake"
+
 group :development, :test do
   gem "rspec", "~> 3.3.0"
 end
