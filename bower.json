@@ -1,0 +1,26 @@
+{
+  "name": "Oishinbo",
+  "version": "0.0.0",
+  "homepage": "https://github.com/sota1235/Oishinbo",
+  "description": "lunch map",
+  "main": "app.rb",
+  "keywords": [
+    "lunch",
+    "map"
+  ],
+  "authors": [
+    "i-freshers"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize.css": "~3.0.3",
+    "jQuery": "~2.1.4"
+  }
+}
