@@ -93,6 +93,3 @@ DEPENDENCIES
   sinatra-contrib (~> 1.4.6)
   slim (~> 3.0.6)
   unicorn (~> 4.9.0)
-
-BUNDLED WITH
-   1.10.5
