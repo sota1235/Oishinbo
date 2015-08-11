@@ -9,3 +9,4 @@ tmp/*
 
 bower_components/
 assets/lib/
+db/*.sqlite3
