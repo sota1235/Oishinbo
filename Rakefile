@@ -1,4 +1,3 @@
-# coding: utf-8
 require 'rake'
 require 'sinatra/activerecord/rake'
 
