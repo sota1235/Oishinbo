@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150803140551) do
+ActiveRecord::Schema.define(version: 20150812112303) do
 
   create_table "account_sections", force: :cascade do |t|
     t.integer  "account_id",              null: false
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20150803140551) do
   create_table "accounts", force: :cascade do |t|
     t.string   "name",                    null: false
     t.string   "email",                   null: false
-    t.text     "profile",                 null: false
+    t.text     "profile"
     t.string   "password",                null: false
     t.integer  "admin_flag",  default: 0, null: false
     t.datetime "created_at"
