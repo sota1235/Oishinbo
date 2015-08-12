@@ -1,4 +1,4 @@
-
+.bundle/
 vendor/bundle
 
 logs/*
@@ -6,3 +6,7 @@ logs/*
 
 tmp/*
 !tmp/empty
+
+bower_components/
+assets/lib/
+db/*.sqlite3
