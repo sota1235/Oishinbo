@@ -31,5 +31,27 @@ module Oishinbo
       @test = Oishinbo::Restaurant.all
       slim :test
     end
+
+    get "/account/new" do
+      slim :account_new
+    end
+
+    post "/account/create" do
+      account = Account.new do |a|
+        a.name = params[:name].strip
+        a.email = params[:email]
+        a.password = params[:password]
+        a.password_confirmation = params[:password_confirmation]
+        a.account_sections.build.section_id = params[:section_id]
+      end
+
+      if account.save
+
+      else
+        puts account.errors.messages
+      end
+
+      slim :account_new
+    end
   end
 end
