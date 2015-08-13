@@ -13,6 +13,7 @@ gem "unicorn", "~> 4.9.0"
 gem "redis", "~> 3.2.1"
 
 gem "rake", "~> 10.4.2"
+gem "bcrypt", "~> 3.1.10"
 
 group :development, :test do
   gem "sqlite3", "~> 1.3.10"
