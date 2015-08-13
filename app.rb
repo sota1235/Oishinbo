@@ -16,11 +16,15 @@ require_relative 'services/init'
 
 module Oishinbo
   class App < Sinatra::Base
+    enable :sessions
+    set :session_secret, "My session secret"
+
     configure do
       register Sinatra::AssetPack
       register Sinatra::ActiveRecordExtension
       helpers Sinatra::ContentFor
-      enable :sessions
+      register Sinatra::ActiveRecordExtension
+
       set :database_file, "config/database.yml"
       set :public_folder, File.dirname(__FILE__) + '/public'
     end
@@ -77,5 +81,13 @@ module Oishinbo
       js_compression :jsmin
       css_compression :sass
     end
+
+    private
+
+      def is_login
+        if session[:user_id] == nil
+          false
+        end
+      end
   end
 end
