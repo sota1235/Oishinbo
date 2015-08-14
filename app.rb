@@ -10,6 +10,7 @@ require_relative 'models/init'
 module Oishinbo
   class App < Sinatra::Base
     configure do
+      enable :sessions
       register Sinatra::ActiveRecordExtension 
       set :database_file, "config/database.yml"
     end
@@ -33,6 +34,8 @@ module Oishinbo
     end
 
     get "/account/new" do
+      @errors = session[:errors] unless session[:errors].nil?
+      @sections = Section.all
       slim :account_new
     end
 
@@ -46,12 +49,11 @@ module Oishinbo
       end
 
       if account.save
-
+        redirect to "/"
       else
-        puts account.errors.messages
+        session[:errors] = account.errors.messages
+        redirect back
       end
-
-      slim :account_new
     end
   end
 end
