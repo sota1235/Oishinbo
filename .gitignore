@@ -1,12 +1,23 @@
+# bundler
 .bundle/
 vendor/bundle
 
+# log
 logs/*
 !logs/empty
 
+# temporary
 tmp/*
 !tmp/empty
 
+# bower
 bower_components/
+
+# library
 assets/lib/
+
+# database
 db/*.sqlite3
+
+# sass
+.sass-cache/
