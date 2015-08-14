@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require 'sinatra/assetpack'
 require 'sinatra/activerecord'
 require 'slim'
 require 'redis'
@@ -10,7 +11,8 @@ require_relative 'models/init'
 module Oishinbo
   class App < Sinatra::Base
     configure do
-      register Sinatra::ActiveRecordExtension 
+      register Sinatra::AssetPack
+      register Sinatra::ActiveRecordExtension
       set :database_file, "config/database.yml"
     end
 
@@ -30,6 +32,22 @@ module Oishinbo
     get '/test' do
       @test = Oishinbo::Restaurant.all
       slim :test
+    end
+
+    # js and css
+    assets do
+      serve '/js', :from => 'assets/javascripts'
+      js :application, [
+        '/js/*.js'
+      ]
+
+      serve '/css', :from => 'assets/stylesheets'
+      css :applicatin, [
+        '/css/*.css'
+      ]
+
+      js_compression :jsmin
+      css_compression :sass
     end
   end
 end
