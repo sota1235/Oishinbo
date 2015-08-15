@@ -6,6 +6,9 @@ require 'redis'
 require 'coffee-script'
 require 'sass'
 
+require 'dotenv'
+Dotenv.load
+
 require_relative 'models/init'
 
 module Oishinbo
