@@ -28,11 +28,6 @@ module Oishinbo
       slim :index
     end
 
-    get '/test' do
-      @test = Oishinbo::Restaurant.all
-      slim :test
-    end
-
     get "/account/new" do
       @sections = Section.all
       slim :account_new
