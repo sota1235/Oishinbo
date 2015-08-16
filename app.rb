@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require 'sinatra/assetpack'
 require 'sinatra/activerecord'
+require 'sinatra/content_for'
 require 'slim'
 require 'redis'
 require 'coffee-script'
@@ -16,6 +17,7 @@ module Oishinbo
     configure do
       register Sinatra::AssetPack
       register Sinatra::ActiveRecordExtension
+      helpers Sinatra::ContentFor
       set :database_file, "config/database.yml"
     end
 

@@ -24,6 +24,7 @@ class GoogleMap
   ### init ###
   constructor: (@canvas) ->
     _canvasObj = @canvas
+    initMap _canvasObj
 
   ### static public method ###
   @makeMarker : (@lat, @lng, @shopName) ->
