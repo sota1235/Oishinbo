@@ -4,6 +4,7 @@ require 'slim'
 require 'redis'
 require 'coffee-script'
 require 'sass'
+require 'rack-flash'
 
 require_relative 'models/init'
 
@@ -18,6 +19,8 @@ module Oishinbo
     configure :development do
       require 'sinatra/reloader'
       register Sinatra::Reloader
+
+      use Rack::Flash
     end
 
     helpers do
@@ -45,7 +48,7 @@ module Oishinbo
       if account.save
         redirect "/"
       else
-        session[:errors] = account.errors.messages
+        flash[:errors] = account.errors.messages
         redirect back
       end
     end

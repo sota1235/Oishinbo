@@ -1,8 +1,8 @@
 h1 New Account
 div
-  - unless session[:errors].nil?
+  - if flash[:errors]
     div#errors
-      - session[:errors].each do |key, values|
+      - flash[:errors].each do |key, values|
         - values.each do |value|
           div = value
   form action="/account/create" method="post"
