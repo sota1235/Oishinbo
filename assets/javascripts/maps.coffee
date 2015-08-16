@@ -17,7 +17,7 @@ class GoogleMap
   _latlng    = new google.maps.LatLng 35.7, 139.0
   _mapOption =
     zoom:   15      # ズーム値
-    center: latlng # 中央の座標
+    center: _latlng # 中央の座標
   # marker
   _markers = []
 
