@@ -7,7 +7,14 @@ module Oishinbo
     has_many :account_sections
     has_many :sections, through: :account_sections
 
-    validates :name, presence: {message: '名前が入力されていません'}
+    validates :name, {
+      presence: {message: '名前が入力されていません'},
+      format: {
+        with: /\A[^\<\>\*\-\_\!\@\#\$\%\[\]\\\/\;\:\(\)]+\Z/,
+        on: :create,
+        message: ' 名前に入力されている値が不正です'
+      }
+    }
 
     validates :email, {
       presence: {message: 'メールアドレスが入力されていません'},
