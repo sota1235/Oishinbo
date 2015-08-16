@@ -21,7 +21,7 @@ class GoogleMap
   # marker
   _markers = []
 
-  ### inti ###
+  ### init ###
   constructor: (@canvas) ->
     _canvasObj = @canvas
 
