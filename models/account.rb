@@ -33,9 +33,8 @@ module Oishinbo
     end
 
     def password=(password)
-      if password.empty?
-        @password = ""
-      else
+      @password = ""
+      unless password.empty?
         @password = Password.create(password)
       end
       self.password_hash = @password 
