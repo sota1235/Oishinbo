@@ -53,6 +53,6 @@ module Oishinbo
         session[:errors] = account.errors.messages
         redirect back
       end
-    en
+    end
   end
 end
