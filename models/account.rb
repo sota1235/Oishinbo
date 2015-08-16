@@ -10,7 +10,7 @@ module Oishinbo
     validates :name, {
       presence: {message: '名前が入力されていません'},
       format: {
-        with: /\A[^\<\>\*\-\_\!\@\#\$\%\[\]\\\/\;\:\(\)]+\Z/,
+        with: /\A[^\<\>\*\-\_\!\@\#\$\%\[\]\\\/\;\:\(\)]*\z/,
         on: :create,
         message: ' 名前に入力されている値が不正です'
       }
@@ -20,7 +20,7 @@ module Oishinbo
       presence: {message: 'メールアドレスが入力されていません'},
       uniqueness: {message: 'このメールアドレスは既に登録されています'},
       format: {
-        with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i,
+        with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,
         on: :create ,
         message: 'メールアドレスの形式が正しくありません'
       }
