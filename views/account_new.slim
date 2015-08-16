@@ -1,22 +1,18 @@
 h1 New Account
 div
+  - unless session[:errors].nil?
+    div#errors
+      - session[:errors].each do |key, values|
+        - values.each do |value|
+          div = value
   form action="/account/create" method="post"
     div
-      - if !@errors.nil? && @errors[:name]
-        - @errors[:name].each do |name|
-          div = name
       label for="name" 名前: 
       input type="text" name="name" id="name"
     div
-      - if !@errors.nil? && @errors[:email]
-        - @errors[:email].each do |email|
-          div = email
       label for="email" Email: 
       input type="email" name="email" id="email"
     div
-      - if !@errors.nil? && @errors[:password_confirmation]
-        - @errors[:password_confirmation].each do |pass|
-          div = pass
       label for="password" Password: 
       input type="password" name="password" id="password"
     div

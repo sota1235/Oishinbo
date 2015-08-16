@@ -34,7 +34,6 @@ module Oishinbo
     end
 
     get "/account/new" do
-      @errors = session[:errors] unless session[:errors].nil?
       @sections = Section.all
       slim :account_new
     end
@@ -49,11 +48,11 @@ module Oishinbo
       end
 
       if account.save
-        redirect to "/"
+        redirect "/"
       else
         session[:errors] = account.errors.messages
         redirect back
       end
-    end
+    en
   end
 end

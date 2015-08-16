@@ -7,14 +7,14 @@ module Oishinbo
     has_many :account_sections
     has_many :sections, through: :account_sections
 
-    validates :name, presence: true
+    validates :name, presence: {message: '名前が入力されていません'}
 
-    validates :email, uniqueness: true
-    validates :email, presence: true
+    validates :email, uniqueness: {message: 'このメールアドレスは既に登録されています'}
+    validates :email, presence: {message: 'メールアドレスが入力されていません'}
 
-    validates :password, presence: true
-    validates :password, confirmation: true 
-    validates :password_confirmation, presence: true
+    validates :password, presence: {message: 'パスワードが入力されていません'}
+    validates :password, confirmation: {message: 'パスワード(確認用)が入力されていません'}
+    validates :password_confirmation, presence: {message: 'パスワードが一致しません'}
 
     def password
       @password ||= Password.new(password_hash)
