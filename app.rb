@@ -19,6 +19,7 @@ module Oishinbo
       register Sinatra::ActiveRecordExtension
       helpers Sinatra::ContentFor
       set :database_file, "config/database.yml"
+      set :public_folder, File.dirname(__FILE__) + '/public'
     end
 
     configure :development do
