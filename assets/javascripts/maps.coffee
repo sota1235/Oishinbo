@@ -10,21 +10,21 @@
 #   canvasのDOMオブジェクトを引数にプロトタイプ生成できるようにする
 #   APIのいくつかを必要な機能に応じて拡張しつつラップする
 
-class GoogleMap
+class @GoogleMap
   # map
-  _canvas    = null
+  @_canvas   : null
   _map       = null
   _latlng    = new google.maps.LatLng 35.7, 139.0
   _mapOption =
     zoom:   15      # ズーム値
     center: _latlng # 中央の座標
+    mapTypeId: google.maps.MapTypeId.ROADMAP
   # marker
   _markers = []
 
   ### init ###
   constructor: (@canvas) ->
-    _canvasObj = @canvas
-    initMap _canvasObj
+    initMap @canvas
 
   ### static public method ###
   @makeMarker : (@lat, @lng, @shopName) ->
@@ -36,4 +36,4 @@ class GoogleMap
 
   ### private method ###
   initMap = (@canvas) ->
-    _map = new google.maps.Map @canvas, @mapOption
+    _map = new google.maps.Map @canvas, _mapOption

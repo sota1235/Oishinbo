@@ -10,16 +10,13 @@ $ ->
   ###
   # Variable
   ###
-  googleMap = null
   $map      = $ '#map_canvas'
+  googleMap = new GoogleMap $map
 
   ###
   # Functions
   ###
 
-  # init
-  init = () ->
-    googleMap = new GoogleMap $map
 
   ###
   # Event listener
