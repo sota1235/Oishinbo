@@ -23,12 +23,24 @@ Oishinbo
 
 ### Install
 
+- Clone the repository
+
 ```
 $ git clone git@github.com:sota1235/Oishinbo.git
 
 $ cd Oishinbo
 
 $ bundle install --path vendor/bundle
+```
+
+- Bower install
+
+You need [bower](https://github.com/bower/bower).
+
+```
+$ npm install -g bower
+
+$ bower install
 ```
 
 - Migration
