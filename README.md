@@ -43,6 +43,16 @@ $ npm install -g bower
 $ bower install
 ```
 
+- Edit `.env`.
+
+You can use `.env.example`!! Copy the file and edit it as `.env`.
+
+```
+$ cp .env.example .env
+
+$ vim .env
+```
+
 - Migration
 
 ```
