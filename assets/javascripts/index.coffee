@@ -10,7 +10,7 @@ $ ->
   ###
   # Variable
   ###
-  $map      = $ '#map_canvas'
+  $map      = $('#map_canvas')[0]
   googleMap = new GoogleMap $map
 
   ###
