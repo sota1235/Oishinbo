@@ -1,19 +1,27 @@
 require 'sinatra/base'
+require 'sinatra/assetpack'
 require 'sinatra/activerecord'
+require 'sinatra/content_for'
 require 'slim'
 require 'redis'
 require 'coffee-script'
 require 'sass'
 require 'rack-flash'
 
+require 'dotenv'
+Dotenv.load
+
 require_relative 'models/init'
 
 module Oishinbo
   class App < Sinatra::Base
     configure do
+      register Sinatra::AssetPack
+      register Sinatra::ActiveRecordExtension
+      helpers Sinatra::ContentFor
       enable :sessions
-      register Sinatra::ActiveRecordExtension 
       set :database_file, "config/database.yml"
+      set :public_folder, File.dirname(__FILE__) + '/public'
     end
 
     configure :development do
@@ -51,6 +59,22 @@ module Oishinbo
         flash[:errors] = account.errors.messages
         redirect back
       end
+    end
+
+    # js and css
+    assets do
+      serve '/js', :from => 'assets/javascripts'
+      js :application, [
+        '/js/*.js'
+      ]
+
+      serve '/css', :from => 'assets/stylesheets'
+      css :applicatin, [
+        '/css/*.css'
+      ]
+
+      js_compression :jsmin
+      css_compression :sass
     end
   end
 end

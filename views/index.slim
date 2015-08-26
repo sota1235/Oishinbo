@@ -1,1 +1,9 @@
-h1 HelloWorld
+h1 Hello, Oishinbo!
+/Google Mapの表示スペース確保
+div#map_canvas
+
+- content_for :addJs do
+  script src='/js/index.js'
+
+- content_for :addCss do
+  link rel='stylesheet' href='css/index.css'
