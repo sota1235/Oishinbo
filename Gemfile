@@ -10,11 +10,13 @@ gem "sass", "~> 3.4.16"
 gem "coffee-script", "~> 2.4.1"
 gem "sinatra-activerecord", "~> 2.0.6"
 gem "dotenv", "~> 2.0.2"
+gem "rack-flash3", "~> 1.0.5"
 
 gem "unicorn", "~> 4.9.0"
 gem "redis", "~> 3.2.1"
 
 gem "rake", "~> 10.4.2"
+gem "bcrypt", "~> 3.1.10"
 
 group :development, :test do
   gem "sqlite3", "~> 1.3.10"

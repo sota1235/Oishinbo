@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150803140551) do
+ActiveRecord::Schema.define(version: 20150813143502) do
 
   create_table "account_sections", force: :cascade do |t|
     t.integer  "account_id",              null: false
@@ -23,15 +23,15 @@ ActiveRecord::Schema.define(version: 20150803140551) do
   end
 
   create_table "accounts", force: :cascade do |t|
-    t.string   "name",                    null: false
-    t.string   "email",                   null: false
-    t.text     "profile",                 null: false
-    t.string   "password",                null: false
-    t.integer  "admin_flag",  default: 0, null: false
+    t.string   "name",                      null: false
+    t.string   "email",                     null: false
+    t.text     "profile"
+    t.string   "password_hash",             null: false
+    t.integer  "admin_flag",    default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "deleted_at"
-    t.integer  "delete_flag", default: 0, null: false
+    t.integer  "delete_flag",   default: 0, null: false
   end
 
   create_table "evaluations", force: :cascade do |t|
