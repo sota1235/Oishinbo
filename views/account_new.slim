@@ -1,0 +1,26 @@
+h1 New Account
+div
+  - if flash[:errors]
+    div#errors
+      - flash[:errors].each do |key, values|
+        - values.each do |value|
+          div = value
+  form action="/account/create" method="post"
+    div
+      label for="name" 名前: 
+      input type="text" name="name" id="name" required=""
+    div
+      label for="email" Email: 
+      input type="email" name="email" id="email" required=""
+    div
+      label for="password" Password: 
+      input type="password" name="password" id="password" required=""
+    div
+      label for="password-confirm" Password確認: 
+      input type="password" name="password_confirmation" id="password-confirm" required=""
+    div
+      select name="section_id"
+        - @sections.each do |s|
+          option value="#{s.id}" = s.name
+    div  
+      input type="submit" value="確認"
