@@ -1,4 +1,4 @@
-require 'account'
-require 'account_section'
-require 'restaurant'
-require 'section'
+require_relative 'account'
+require_relative 'account_section'
+require_relative 'restaurant'
+require_relative 'section'

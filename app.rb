@@ -11,6 +11,7 @@ require 'rack-flash'
 require 'dotenv'
 Dotenv.load
 
+require_relative 'models/init'
 require_relative 'services/init'
 
 module Oishinbo
