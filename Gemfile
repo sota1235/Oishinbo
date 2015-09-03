@@ -21,6 +21,7 @@ gem "bcrypt", "~> 3.1.10"
 group :development, :test do
   gem "sqlite3", "~> 1.3.10"
   gem "rspec", "~> 3.3.0"
+  gem "coffeelint", "~> 1.11.0"
 end
 
 group :production do
