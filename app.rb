@@ -24,6 +24,7 @@ module Oishinbo
       register Sinatra::ActiveRecordExtension
       helpers Sinatra::ContentFor
       register Sinatra::ActiveRecordExtension
+      use Rack::Flash
 
       set :database_file, "config/database.yml"
       set :public_folder, File.dirname(__FILE__) + '/public'
@@ -32,12 +33,26 @@ module Oishinbo
     configure :development do
       require 'sinatra/reloader'
       register Sinatra::Reloader
-
-      use Rack::Flash
     end
 
     helpers do
       #and more...
+    end
+
+    # js and css
+    assets do
+      serve '/js', :from => 'assets/javascripts'
+      js :application, [
+        '/js/*.js'
+      ]
+
+      serve '/css', :from => 'assets/stylesheets'
+      css :applicatin, [
+        '/css/*.css'
+      ]
+
+      js_compression :jsmin
+      css_compression :sass
     end
 
     get '/' do
@@ -66,28 +81,22 @@ module Oishinbo
       end
     end
 
-    # js and css
-    assets do
-      serve '/js', :from => 'assets/javascripts'
-      js :application, [
-        '/js/*.js'
-      ]
+    get "/login" do
+      redirect '/' unless is_login
+      slim :login 
+    end
 
-      serve '/css', :from => 'assets/stylesheets'
-      css :applicatin, [
-        '/css/*.css'
-      ]
+    post "/login" do
 
-      js_compression :jsmin
-      css_compression :sass
     end
 
     private
-
-      def is_login
-        if session[:user_id] == nil
-          false
-        end
+    def is_login
+      if session[:user_id].nil? 
+        true
+      else
+        false
       end
+    end
   end
 end
