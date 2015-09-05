@@ -87,7 +87,14 @@ module Oishinbo
     end
 
     post "/login" do
-
+      account = Account.find_by_email(params[:email])
+      if account.password == params[:password]
+        session[:user_id] = account.id
+        redirect "/"
+      else
+        flash[:errors] = account.errors.messages
+        redirect back
+      end
     end
 
     private
