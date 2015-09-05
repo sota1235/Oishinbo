@@ -1,2 +1,2 @@
 # required at app.rb
-require 'gurunavi_api'
+require_relative 'gurunavi_api'
