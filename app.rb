@@ -17,7 +17,7 @@ require_relative 'services/init'
 module Oishinbo
   class App < Sinatra::Base
     enable :sessions
-    set :session_secret, "My session secret"
+    set :session_secret, 'My session secret'
 
     configure do
       register Sinatra::AssetPack
@@ -26,7 +26,7 @@ module Oishinbo
       register Sinatra::ActiveRecordExtension
       use Rack::Flash
 
-      set :database_file, "config/database.yml"
+      set :database_file, 'config/database.yml'
       set :public_folder, File.dirname(__FILE__) + '/public'
     end
 
@@ -56,15 +56,21 @@ module Oishinbo
     end
 
     get '/' do
+      if session[:account_id]
+        @session = session[:account_id]
+      else
+        @session = 'hoge'
+      end
       slim :index
     end
 
-    get "/account/new" do
+    get '/account/new' do
+      redirect '/' unless is_login
       @sections = Section.all
       slim :account_new
     end
 
-    post "/account/create" do
+    post '/account/create' do
       account = Account.new do |a|
         a.name = params[:name].strip
         a.email = params[:email]
@@ -74,32 +80,40 @@ module Oishinbo
       end
 
       if account.save
-        redirect "/"
+        redirect '/'
       else
         flash[:errors] = account.errors.messages
         redirect back
       end
     end
 
-    get "/login" do
+    get '/login' do
       redirect '/' unless is_login
       slim :login 
     end
 
-    post "/login" do
+    post '/login' do
       account = Account.find_by_email(params[:email])
-      if account.password == params[:password]
-        session[:user_id] = account.id
-        redirect "/"
+      if account && account.password == params[:password]
+        session[:account_id] = account.id
+        redirect '/'
       else
-        flash[:errors] = account.errors.messages
+        flash[:error] = 'メールアドレス，もしくはパスワードが異なります。'
+        flash[:email] = params[:email]
         redirect back
       end
     end
 
+    get '/logout' do
+      redirect '/' unless session[:account_id]
+
+      session[:account_id] = nil
+      redirect '/'
+    end
+
     private
     def is_login
-      if session[:user_id].nil? 
+      if session[:account_id].nil? 
         true
       else
         false
