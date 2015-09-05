@@ -65,7 +65,7 @@ module Oishinbo
     end
 
     get '/account/new' do
-      redirect '/' unless is_login
+      redirect '/' unless is_login?
       @sections = Section.all
       slim :account_new
     end
@@ -88,7 +88,7 @@ module Oishinbo
     end
 
     get '/login' do
-      redirect '/' unless is_login
+      redirect '/' unless is_login?
       slim :login 
     end
 
@@ -104,20 +104,17 @@ module Oishinbo
       end
     end
 
-    get '/logout' do
+    post '/logout' do
       redirect '/' unless session[:account_id]
 
-      session[:account_id] = nil
+      session.clear
       redirect '/'
     end
 
     private
-    def is_login
-      if session[:account_id].nil? 
-        true
-      else
-        false
-      end
+    def is_login?
+      return true if session[:account_id].nil? 
+      return false
     end
   end
 end

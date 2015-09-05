@@ -6,7 +6,8 @@ div
   div
     a href="/account/new" アカウント作成ページ
   div
-    a href="/logout" ログアウト
+    form action="/logout" method="post"
+      input type="submit" value="ログアウト"
 
 /Google Mapの表示スペース確保
 div#map_canvas
@@ -16,4 +17,3 @@ div#map_canvas
 
 - content_for :addCss do
   link rel='stylesheet' href='css/index.css'
-

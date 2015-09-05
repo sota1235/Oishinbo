@@ -50,6 +50,5 @@ module Oishinbo
     def find_by_email(email)
       account = self.where(email).first
     end
-
   end
 end
