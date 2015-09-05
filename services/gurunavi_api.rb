@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # gurunavi_api.rb
 #
 # Description:
@@ -7,6 +8,7 @@
 #   sota1235
 
 require 'open-uri'
+require 'rest-client'
 require 'json'
 require 'dotenv'
 Dotenv.load
@@ -14,7 +16,8 @@ Dotenv.load
 module Oishinbo
   class GurunaviApi
     def initialize
-      @keyid = ENV['GURUNAVI_API_KEY']
+      @keyid  = ENV['GURUNAVI_API_KEY']
+      @format = 'json'
     end
 
     # serach restaurant by free word
@@ -23,10 +26,10 @@ module Oishinbo
       freeword = fw
 
       # create request URL
-      request_url = "#{base_url}?keyid=#{@keyid}&fw=#{freeword}"
+      params = { 'keyid' => @keyid, 'freeword' => freeword, 'format' => @format }
       # GET request
-      res = open(request_url)
-      JSON.parse res
+      responce = RestClient.get base_url, {:params => params}
+      JSON.parse responce
     end
 
     # get restaurant's information

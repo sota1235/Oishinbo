@@ -116,7 +116,7 @@ module Oishinbo
 
     # serch restaurant
     post '/search/restaurant' do
-      gurunavi_api = new GurunaviApi
+      gurunavi_api = GurunaviApi.new
       json gurunavi_api.search_restaurant_by_fw params['fw']
     end
 
