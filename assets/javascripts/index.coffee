@@ -32,6 +32,6 @@ $ ->
         fw: $('#search-fw').val()
       success: (msg) ->
         searchResult JSON.stringify msg
-      error: ->
+      error: (msg) ->
         searchResult "Error: #{msg}"
       timeout: 5000
