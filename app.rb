@@ -113,8 +113,7 @@ module Oishinbo
 
     private
     def is_login?
-      return true if session[:account_id].nil? 
-      return false
+      session[:account_id].nil? ? true : false
     end
   end
 end
