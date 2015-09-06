@@ -16,6 +16,9 @@ bower_components/
 # library
 assets/lib/
 
+# rspec
+spec/examples.txt
+
 # database
 db/*.sqlite3
 

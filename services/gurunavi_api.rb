@@ -33,6 +33,7 @@ module Oishinbo
 
     # get restaurant's information
     def get_restaurant_info
+      'hello'
     end
   end
 end
