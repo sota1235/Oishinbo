@@ -20,12 +20,12 @@ module Oishinbo
     end
 
     # serach restaurant by free word
-    def search_restaurant_by_fw(fw)
+    def search_restaurant_by_fw(fw, offset = 1)
       base_url = Base_host + 'RestSearchAPI/20150630/'
       freewords = fw.split(' ').join ','
 
       # create request URL
-      params = { keyid: @keyid, freeword: freewords, format: @format }
+      params = { keyid: @keyid, freeword: freewords, format: @format, offset: offset }
       # GET request
       responce = RestClient.get base_url, {params: params}
       JSON.parse responce
