@@ -26,9 +26,9 @@ module Oishinbo
       freeword = fw
 
       # create request URL
-      params = { 'keyid' => @keyid, 'freeword' => freeword, 'format' => @format }
+      params = { keyid: @keyid, freeword: freeword, format: @format }
       # GET request
-      responce = RestClient.get base_url, {:params => params}
+      responce = RestClient.get base_url, {params: params}
       JSON.parse responce
     end
 
