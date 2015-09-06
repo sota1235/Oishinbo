@@ -10,8 +10,6 @@
 require 'open-uri'
 require 'rest-client'
 require 'json'
-require 'dotenv'
-Dotenv.load
 
 module Oishinbo
   class GurunaviApi
