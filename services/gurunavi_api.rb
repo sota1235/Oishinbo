@@ -13,6 +13,8 @@ require 'json'
 
 module Oishinbo
   class GurunaviApi
+    const BASE_HOST = 'http://api.gnavi.co.jp/'
+
     def initialize
       @keyid  = ENV['GURUNAVI_API_KEY']
       @format = 'json'
@@ -20,7 +22,7 @@ module Oishinbo
 
     # serach restaurant by free word
     def search_restaurant_by_fw(fw)
-      base_url = 'http://api.gnavi.co.jp/RestSearchAPI/20150630/'
+      base_url = BASE_HOST + 'RestSearchAPI/20150630/'
       freeword = fw
 
       # create request URL
