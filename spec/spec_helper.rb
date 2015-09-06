@@ -93,5 +93,6 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 
   # require target classes to test
+  # Dir[File.join(File.dirname(__FILE__), '../models/*.rb')].each { |f| require f }
   Dir[File.join(File.dirname(__FILE__), '../services/*.rb')].each { |f| require f }
 end

@@ -8,9 +8,14 @@ task :default => [:coffee_lint, :spec]
 desc 'Run all specs'
 RSpec::Core::RakeTask.new :spec
 
-desc 'Run unit specs'
-RSpec::Core::RakeTask.new 'spec:unit' do |t|
-  t.pattern = 'spec/unit/*_spec.rb'
+desc 'Run model unit specs'
+RSpec::Core::RakeTask.new 'spec:unit:models' do |t|
+  t.pattern = 'spec/unit/models/*_spec.rb'
+end
+
+desc 'Run service unit specs'
+RSpec::Core::RakeTask.new 'spec:unit:services' do |t|
+  t.pattern = 'spec/unit/services/*_spec.rb'
 end
 
 desc 'Run integration specs'
