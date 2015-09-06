@@ -2,6 +2,7 @@ require 'sinatra/base'
 require 'sinatra/assetpack'
 require 'sinatra/activerecord'
 require 'sinatra/content_for'
+require 'sinatra/json'
 require 'slim'
 require 'redis'
 require 'coffee-script'
@@ -89,7 +90,7 @@ module Oishinbo
 
     get '/login' do
       redirect '/' unless is_login?
-      slim :login 
+      slim :login
     end
 
     post '/login' do
@@ -109,6 +110,14 @@ module Oishinbo
 
       session.clear
       redirect '/'
+    end
+
+    ### Restaurant API ###
+
+    # serch restaurant
+    post '/search/restaurant' do
+      gurunavi_api = GurunaviApi.new
+      json gurunavi_api.search_restaurant_by_fw params['fw']
     end
 
     private
