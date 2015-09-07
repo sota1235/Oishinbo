@@ -112,6 +112,27 @@ module Oishinbo
       redirect '/'
     end
 
+    post '/register' do
+      dummy = {
+        "name"        => "寿司屋オイシンボ",
+        "name_kana"   => "sushiyaoishinbo",
+        "address"     => "wtf",
+        "category"    => "寿司",
+        "tel"         => "08012345678",
+        "latitude"    => 35.65,
+        "longitube"   => 139.7,
+        "pc_url"      => "http://aboy-perry.hatenablog.com/",
+        "mobile_url"  => nil,
+        "time_detail" => "年中無休、24時間営業",
+        "holiday"     => "毎日がエブリデイ"
+      } 
+      r = Restaurant.new
+      # TODO: ぐるなびAPIから取得した店舗情報を格納する
+      r.register_restaurant(dummy)
+      "Register Done"
+      # TODO: 店舗登録できた旨、ポップアップなどで表示
+    end
+
     ### Restaurant API ###
 
     # serch restaurant
