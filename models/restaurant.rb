@@ -14,22 +14,3 @@ module Oishinbo
 
   end
 end
-
-dummy = {
-	"name" 		  => "寿司屋オイシンボ",
-	"name_kana"   => "sushiyaoishinbo",
-	"address"     => "wtf",
-	"category"    => "寿司",
-	"tel"         => "08012345678",
-	"latitude"    => 35.65,
-	"longitube"   => 139.7,
-	"pc_url"      => "http://aboy-perry.hatenablog.com/",
-	"mobile_url"  => nil,
-	"time_detail" => "年中無休、24時間営業",
-	"holiday"     => "毎日がエブリデイ"
-}
-
-include Oishinbo
-#p = Restaurant.new
-#p.register_restaurant(dummy)
-p Restaurant.all
