@@ -97,6 +97,7 @@ module Oishinbo
       end
 
       if account.save
+        session[:account_id] = account.id
         redirect '/'
       else
         flash[:errors] = account.errors.messages
@@ -142,6 +143,12 @@ module Oishinbo
 
       session.clear
       redirect '/'
+    end
+
+    get '/mypage' do
+      redirect '/login' unless session[:account_id]
+      
+      # and more...
     end
 
     ### Restaurant API ###
