@@ -32,8 +32,33 @@ ActiveRecord::Schema.define(version: 20150910154302) do
     t.integer  "deleted_flag",  default: 0, null: false
   end
 
+<<<<<<< HEAD
   create_table "comments", force: :cascade do |t|
     t.integer  "account_id",                null: false
+=======
+  create_table "evaluation_foods", force: :cascade do |t|
+    t.integer  "evaluation_id",             null: false
+    t.integer  "food_id",                   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "deleted_at"
+    t.integer  "delete_flag",   default: 0, null: false
+    t.text     "comment"
+    t.binary   "photo"
+  end
+
+  create_table "evaluations", force: :cascade do |t|
+    t.integer  "account_id",                          null: false
+    t.integer  "restaurant_id",                       null: false
+    t.integer  "point",         limit: 5, default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "deleted_at"
+    t.integer  "delete_flag",             default: 0, null: false
+  end
+
+  create_table "foods", force: :cascade do |t|
+>>>>>>> #51 modify and add: スキーマを変更，評価と食べ物の中間テーブルを作成，不要なカラムの除去，新しいカラムの付与
     t.integer  "restaurant_id",             null: false
     t.text     "comments",                  null: false
     t.datetime "created_at"

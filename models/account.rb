@@ -7,7 +7,7 @@ module Oishinbo
     has_many :account_sections
     has_many :sections, through: :account_sections
     has_many :participants
-    has_many :evalutions
+    has_many :evaluations
 
     validates :name, {
       presence: {message: '名前が入力されていません'},
