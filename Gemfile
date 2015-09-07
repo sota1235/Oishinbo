@@ -11,6 +11,7 @@ gem "coffee-script", "~> 2.4.1"
 gem "sinatra-activerecord", "~> 2.0.6"
 gem "dotenv", "~> 2.0.2"
 gem "rack-flash3", "~> 1.0.5"
+gem "rest-client", "~> 1.8.0"
 
 gem "unicorn", "~> 4.9.0"
 gem "redis", "~> 3.2.1"

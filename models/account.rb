@@ -46,5 +46,9 @@ module Oishinbo
       end
       self.password_hash = @password 
     end
+
+    def find_by_email(email)
+      account = self.where(email).first
+    end
   end
 end
