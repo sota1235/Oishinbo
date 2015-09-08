@@ -6,16 +6,19 @@ RSpec.describe Oishinbo::GurunaviApi do
     @service = Oishinbo::GurunaviApi.new
   end
 
-  it 'return informations of restaurant by free word searching' do
-    # allow call get function
-    rest_client = RestClient
-    expect(rest_client).to receive(:get).and_return '[ "hoge" ]'
+  it 'return informations about restaurant by free word searching' do
+    # allow call request function
+    expect(@service).to receive(:request).and_return '[ "hoge" ]'
 
     # assertion
     expect(@service.search_restaurant_by_fw 'moge', 1).to eq [ "hoge" ]
   end
 
-  it 'return hello' do
-    expect(@service.get_restaurant_info).to eq 'hello'
+  it 'return information about information by id' do
+    # allow call request function
+    expect(@service).to receive(:request).and_return '[ "moge" ]'
+
+    # assertion
+    expect(@service.get_restaurant_info_by_id 1).to eq [ "moge" ]
   end
 end
