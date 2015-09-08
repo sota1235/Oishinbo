@@ -9,6 +9,8 @@ html
     script src='/js/maps.js'
     title Oishinbo
     == yield_content :addCss
-    == yield_content :addJs
   body
+    == slim :'commons/_header'
     == yield
+    == slim :'commons/_footer'
+    == yield_content :addJs
