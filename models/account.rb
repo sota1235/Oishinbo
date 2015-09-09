@@ -65,5 +65,9 @@ module Oishinbo
     def find_by_email(email)
       account = self.where(email).first
     end
+
+    def find_account_info_by_id(id)
+      account_info = self.where
+    end
   end
 end
