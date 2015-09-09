@@ -23,6 +23,7 @@ group :development, :test do
   gem "sqlite3", "~> 1.3.10"
   gem "rspec", "~> 3.3.0"
   gem "coffeelint", "~> 1.11.0"
+  gem 'coveralls', '~> 0.8.2', require: false
 end
 
 group :production do
