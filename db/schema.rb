@@ -11,15 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150813143502) do
+ActiveRecord::Schema.define(version: 20150909154950) do
 
   create_table "account_sections", force: :cascade do |t|
-    t.integer  "account_id",              null: false
-    t.integer  "section_id",              null: false
+    t.integer  "account_id",               null: false
+    t.integer  "section_id",               null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "deleted_at"
-    t.integer  "delete_flag", default: 0, null: false
+    t.integer  "deleted_flag", default: 0, null: false
   end
 
   create_table "accounts", force: :cascade do |t|
@@ -30,40 +29,25 @@ ActiveRecord::Schema.define(version: 20150813143502) do
     t.integer  "admin_flag",    default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "deleted_at"
-    t.integer  "delete_flag",   default: 0, null: false
+    t.integer  "deleted_flag",  default: 0, null: false
   end
 
-  create_table "evaluations", force: :cascade do |t|
-    t.integer  "account_id",                          null: false
-    t.integer  "restaurant_id",                       null: false
-    t.integer  "food_id",                             null: false
-    t.text     "comment"
-    t.binary   "photo"
-    t.integer  "point",         limit: 5, default: 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.datetime "deleted_at"
-    t.integer  "delete_flag",             default: 0, null: false
-  end
-
-  create_table "foods", force: :cascade do |t|
+  create_table "comments", force: :cascade do |t|
+    t.integer  "account_id",                null: false
     t.integer  "restaurant_id",             null: false
-    t.string   "name",                      null: false
-    t.integer  "price",                     null: false
+    t.text     "comments",                  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "deleted_at"
-    t.integer  "delete_flag",   default: 0, null: false
+    t.integer  "deleted_flag",  default: 0, null: false
   end
 
-  create_table "participants", force: :cascade do |t|
-    t.integer  "account_id",              null: false
-    t.integer  "schedule_id",             null: false
+  create_table "counts", force: :cascade do |t|
+    t.integer  "account_id",                null: false
+    t.integer  "restaurant_id",             null: false
+    t.integer  "counts",        default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "deleted_at"
-    t.integer  "delete_flag", default: 0, null: false
+    t.integer  "deleted_flag",  default: 0, null: false
   end
 
   create_table "restaurants", force: :cascade do |t|
@@ -74,41 +58,32 @@ ActiveRecord::Schema.define(version: 20150813143502) do
     t.string   "tel"
     t.float    "latitude"
     t.float    "longitube"
-    t.string   "pc_url"
-    t.string   "mobile_url"
+    t.string   "url"
+    t.string   "url_mobile"
     t.text     "time_detail"
     t.text     "holiday"
+    t.string   "shop_image1"
+    t.string   "shop_image2"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "deleted_at"
-    t.integer  "delete_flag", default: 0, null: false
-  end
-
-  create_table "schedules", force: :cascade do |t|
-    t.integer  "restaurant_id",             null: false
-    t.datetime "date",                      null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.datetime "deleted_at"
-    t.integer  "delete_flag",   default: 0, null: false
+    t.integer  "created_by"
+    t.integer  "updated_by"
+    t.integer  "deleted_flag", default: 0, null: false
   end
 
   create_table "sections", force: :cascade do |t|
-    t.string   "name",                    null: false
+    t.string   "name",                     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "deleted_at"
-    t.integer  "delete_flag", default: 0, null: false
+    t.integer  "deleted_flag", default: 0, null: false
   end
 
   create_table "wants", force: :cascade do |t|
     t.integer  "account_id",                null: false
     t.integer  "restaurant_id",             null: false
-    t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "deleted_at"
-    t.integer  "delete_flag",   default: 0, null: false
+    t.integer  "deleted_flag",  default: 0, null: false
   end
 
 end
