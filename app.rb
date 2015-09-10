@@ -9,9 +9,7 @@ require 'coffee-script'
 require 'sass'
 require 'rack-flash'
 
-require 'dotenv'
-Dotenv.load
-
+# user defined files
 require_relative 'models/init'
 require_relative 'services/init'
 
@@ -21,12 +19,14 @@ module Oishinbo
     set :session_secret, 'My session secret'
 
     configure do
+      require 'dotenv'
+      Dotenv.load
+
       register Sinatra::AssetPack
       register Sinatra::ActiveRecordExtension
       helpers Sinatra::ContentFor
-      register Sinatra::ActiveRecordExtension
-      use Rack::Flash
 
+      use Rack::Flash
       set :database_file, 'config/database.yml'
       set :public_folder, File.dirname(__FILE__) + '/public'
     end
@@ -56,6 +56,9 @@ module Oishinbo
       css_compression :sass
     end
 
+    # トップページ表示用メソッド
+    #
+    # @see Oishinbo::App#index
     get '/' do
       if session[:account_id]
         @session = session[:account_id]
@@ -65,12 +68,25 @@ module Oishinbo
       slim :index
     end
 
+    # アカウント登録フォーム表示用メソッド
+    #
+    # @see Oishinbo::App#account_new
     get '/account/new' do
       redirect '/' unless is_login?
       @sections = Section.all
       slim :account_new
     end
 
+    # アカウント登録処理メソッド
+    #
+    # @param [String]  名前
+    # @param [String]  Email
+    # @param [String]  パスワード
+    # @param [String]  確認用パスワード
+    # @param [Integer] 所属部署ID
+    #
+    # @see Oishinbo::App#index
+    # @see Oishinbo::App#account_new
     post '/account/create' do
       account = Account.new do |a|
         a.name = params[:name].strip
@@ -88,11 +104,22 @@ module Oishinbo
       end
     end
 
+    # ログインページ表示用メソッド
+    #
+    # @see Oishinbo::App#index
+    # @see Oishinbo::App#login
     get '/login' do
       redirect '/' unless is_login?
       slim :login
     end
 
+    # ログイン処理用メソッド
+    #
+    # @param [String] Email
+    # @param [String] パスワード
+    #
+    # @see Oishinbo::App#index
+    # @see Oishinbo::App#login
     post '/login' do
       account = Account.find_by_email(params[:email])
       if account && account.password == params[:password]
@@ -105,6 +132,11 @@ module Oishinbo
       end
     end
 
+    # ログアウト処理用メソッド
+    #
+    # @param [Integer] アカウントID
+    # 
+    # @see Oishinbo::App#index
     post '/logout' do
       redirect '/' unless session[:account_id]
 
@@ -121,6 +153,10 @@ module Oishinbo
     end
 
     private
+
+    # ログイン判定用メソッド
+    #
+    # @return [Boolean] true or false
     def is_login?
       session[:account_id].nil? ? true : false
     end
