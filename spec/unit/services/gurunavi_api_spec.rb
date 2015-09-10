@@ -1,9 +1,10 @@
 require 'spec_helper'
 require 'rest-client'
+include Oishinbo
 
-RSpec.describe Oishinbo::GurunaviApi do
+RSpec.describe GurunaviApi do
   before do
-    @service = Oishinbo::GurunaviApi.new
+    @service ||= GurunaviApi.new
   end
 
   it 'return informations about restaurant by free word searching' do
