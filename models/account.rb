@@ -35,10 +35,18 @@ module Oishinbo
       presence: {message: 'パスワード(確認用)が入力されていません'}
     }
 
+    # ハッシュ化されたPasswordをパースして返却するメソッド
+    #
+    # @return [String] パスワード
     def password
       @password ||= Password.new(password_hash)
     end
 
+    # 与えられた引数をハッシュ化して返すメソッド
+    #
+    # @param [String] パスワード
+    #
+    # @return [Account] Accountオブジェクト
     def password=(password)
       @password = ""
       unless password.empty?
@@ -47,6 +55,11 @@ module Oishinbo
       self.password_hash = @password 
     end
 
+    # メールアドレスでユーザーを検索するメソッド
+    # 
+    # @param [String] Email
+    #
+    # @return [Account] Accountオブジェクト
     def find_by_email(email)
       account = self.where(email).first
     end
