@@ -1,4 +1,4 @@
-class CreateOishinboMinimum < ActiveRecord::Migration
+class CreateOishinbo < ActiveRecord::Migration
   def change
     create_table :accounts do |t|
       t.string :name, null: false
