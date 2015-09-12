@@ -66,8 +66,13 @@ module Oishinbo
       account = self.where(email).first
     end
 
-    def find_account_info_by_id(id)
-      account_info = self.where
+    # アカウントIDでユーザーを検索するメソッド
+    #
+    # @param [Integer] アカウントID
+    #
+    # @return [Account] Accountオブジェクト
+    def find_by_id(id)
+      account = self.where
     end
   end
 end
