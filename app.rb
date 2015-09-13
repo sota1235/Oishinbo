@@ -150,8 +150,8 @@ module Oishinbo
     # @see Oishinbo::App#mypage
     get '/mypage' do
       redirect '/login' unless session[:account_id]
-     
-      account = Account.find_by_id(session[:account_id])
+      account = Account.find_info_by_id(session[:account_id])
+      slim :mypage
     end
 
     ### Restaurant API ###
