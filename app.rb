@@ -150,7 +150,20 @@ module Oishinbo
     # @see Oishinbo::App#mypage
     get '/mypage' do
       redirect '/login' unless session[:account_id]
-      account = Account.find_info_by_id(session[:account_id])
+
+      wants = Want.find_by_account_id(session[:account_id])
+
+      @results = wants.each_with_object([]) do |want, arr|
+        arr << {
+          restaurant_name: want.restaurant.name,
+          restaurant_name_kana: want.restaurant.name_kana,
+          url: want.restaurant.url,
+          url_mobile: want.restaurant.url_mobile,
+          counts: want.count.counts,
+          display_flag: want.display_flag
+        }
+      end
+
       slim :mypage
     end
 

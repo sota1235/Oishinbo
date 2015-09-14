@@ -1,0 +1,16 @@
+h1 マイページだよ
+
+div#main
+  div#account_edit
+    a href="/mypage/account/edit/" アカウント編集ページだよ
+  div#information
+    div アカウントに紐づく情報だよ
+    - @results.each do |result|
+      div.restaurants
+        a target="_blank" href="#{result[:url]}" = "#{result[:restaurant_name]}(#{result[:restaurant_name_kana]})"
+        div = "行った回数: #{result[:counts]}"
+        - if result[:display_flag] == 1
+          div 行きたいを解除
+        - else
+          div 行きたいを設定
+        div#counts_increment 行った++

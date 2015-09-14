@@ -74,7 +74,16 @@ module Oishinbo
     #
     # @return [Account] Accountオブジェクト
     def self.find_info_by_id(id)
-      info = self.includes(:counts,:wants,:comments).find(id)
+      info = self.includes(
+        :counts,
+        :wants,
+        :comments
+      ).joins(
+        counts: :restaurant,
+        wants: :restaurant,
+        comments: :restaurant,
+      )
+      .find(id)
     end
   end
 end
