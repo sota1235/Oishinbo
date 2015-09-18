@@ -70,7 +70,7 @@ module Oishinbo
 
     # アカウントIDでユーザーを検索するメソッド
     #
-    # @param [Integer] アカウントID
+    # @param [[Fixnum] アカウントID
     #
     # @return [Account] Accountオブジェクト
     def self.find_info_by_id(id)

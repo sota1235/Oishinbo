@@ -83,7 +83,7 @@ module Oishinbo
     # @param [String]  Email
     # @param [String]  パスワード
     # @param [String]  確認用パスワード
-    # @param [Integer] 所属部署ID
+    # @param [Fixnum] 所属部署ID
     #
     # @see Oishinbo::App#index
     # @see Oishinbo::App#account_new
@@ -135,7 +135,7 @@ module Oishinbo
 
     # ログアウト処理用メソッド
     #
-    # @param [Integer] アカウントID
+    # @param [Fixnum] アカウントID
     # 
     # @see Oishinbo::App#index
     post '/logout' do
