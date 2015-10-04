@@ -12,6 +12,7 @@ $ ->
   ###
   $map      = $('#map_canvas')[0]
   googleMap = new GoogleMap $map
+  url       = location.protocol + '//' + location.host
 
   ###
   # Functions
@@ -25,13 +26,9 @@ $ ->
 
   # search restaurant by free word
   $('#search-submit').click ->
-    $.ajax
-      url: '/search/restaurant'
-      type: 'POST'
-      data:
-        fw: $('#search-fw').val()
-      success: (msg) ->
-        searchResult JSON.stringify msg
-      error: (msg) ->
-        searchResult "Error: #{msg}"
-      timeout: 5000
+    ajax = new Ajax url + '/search/restaurant'
+    ajax.post fw: $('#search-fw').val()
+      .then (result) ->
+        searchResult JSON.stringify result
+      .catch (error) ->
+        searchResult "Error: #{error}"
