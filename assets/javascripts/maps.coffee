@@ -10,7 +10,7 @@
 #   canvasのDOMオブジェクトを引数にプロトタイプ生成できるようにする
 #   APIのいくつかを必要な機能に応じて拡張しつつラップする
 
-class @GoogleMap
+module.exports = class @GoogleMap
   # map
   @_canvas   : null
   _map       = null

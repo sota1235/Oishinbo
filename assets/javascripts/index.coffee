@@ -6,6 +6,9 @@
 # author:
 #   sota1235
 
+$         = require 'jquery'
+GoogleMap = require './maps'
+
 $ ->
   ###
   # Variable
