@@ -15,7 +15,15 @@
     "map"
   ],
   "dependencies": {
-    "bower": "*"
+    "bower": "*",
+    "browserify": "^11.2.0",
+    "es6-promise": "^3.0.2",
+    "glob": "^5.0.15",
+    "gulp": "^3.9.0",
+    "gulp-coffee": "^2.3.1",
+    "jquery": "^2.1.4",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
   },
   "author": "i-freshers",
   "license": "ISC",
