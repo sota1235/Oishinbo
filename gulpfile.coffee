@@ -19,3 +19,8 @@ gulp.task 'script', ->
     loadMaps: true
   .pipe sourcemaps.write()
   .pipe gulp.dest './public/js/'
+
+gulp.task 'watch', ->
+  gulp.watch 'assets/**/*.coffee', ['script']
+
+gulp.task 'default', ['script']
