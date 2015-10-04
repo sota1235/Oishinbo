@@ -43,6 +43,16 @@ $ npm install -g bower
 $ bower install
 ```
 
+- Build JS
+
+JS files required browserify.
+
+```shell
+$ npm i
+
+$ gulp
+```
+
 - Edit `.env`.
 
 You can use `.env.example`!! Copy the file and edit it as `.env`.
