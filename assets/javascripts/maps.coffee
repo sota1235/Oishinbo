@@ -27,7 +27,7 @@ class @GoogleMap
     initMap @canvas
 
   ### static public method ###
-  @makeMarker : (@lat, @lng, @shopName) ->
+  makeMarker : (@lat, @lng, @shopName) ->
     # TODO: 新たな店のマーカーを立てる
     _markers.push new google.maps.Marker
       map:       _map
