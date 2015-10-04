@@ -135,22 +135,13 @@ module Oishinbo
     # ログアウト処理用メソッド
     #
     # @param [Integer] アカウントID
-    #
+    # 
     # @see Oishinbo::App#index
     post '/logout' do
       redirect '/' unless session[:account_id]
 
       session.clear
       redirect '/'
-    end
-
-    # 店舗登録用メソッド
-
-    # @param [String] ぐるなびAPI仕様の情報配列
-    #
-    # @see Oishinbo::App#account_new
-    post '/shop/new' do
-      # 店舗登録
     end
 
     ### Restaurant API ###
