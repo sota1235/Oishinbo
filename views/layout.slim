@@ -2,6 +2,7 @@ doctype html
 html
   head
     link rel='stylesheet' href='/lib/normalize.css/normalize.css'
+    link rel='stylesheet' href='/lib/bootstrap/dist/css/bootstrap.min.css'
     link rel='stylesheet' href='/lib/flat-ui/dist/css/flat-ui.min.css'
     link rel='stylesheet' href='/css/style.css'
     script src='/lib/jQuery/dist/jquery.min.js'
@@ -10,6 +11,8 @@ html
     script src='/js/maps.js'
     title Oishinbo
     == yield_content :addCss
-    == yield_content :addJs
   body
+    == slim :'commons/_header'
     == yield
+    == slim :'commons/_footer'
+    == yield_content :addJs

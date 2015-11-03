@@ -1,27 +1,24 @@
-h1 Hello, Oishinbo!
-div
-  div とりあえず各ページヘのリンク
-  div
-    a href="/login" ログインページ
-  div
-    a href="/account/new" アカウント作成ページ
-  div
-    form action="/logout" method="post"
-      input type="submit" value="ログアウト"
+.container
 
-/レストラン検索フォーム
-form#search-form
-  input#search-fw type='text'
-  input#search-submit type='button' value='検索'
+  /レストラン検索フォーム
+  .row
+    .center-block style="width: 60%"
+      form#search-form
+        .form-group
+          .col-xs-2
+          .col-xs-5
+            input.form-control#search-fw type='text'
+          .col-xs-3
+            input.btn.btn-block.btn-lg#search-submit type='button' value='検索'
+          .col-xs-2
 
-/レストラン検索結果表示
-div#search-result
+  /Google Mapの表示スペース確保
+  div#map_canvas.center-block style="width: 60%"
 
-/Google Mapの表示スペース確保
-div#map_canvas
+  - content_for :addJs do
+    script src='/js/index.js'
 
-- content_for :addJs do
-  script src='/js/index.js'
+  - content_for :addCss do
+    link rel='stylesheet' href='css/index.css'
 
-- content_for :addCss do
-  link rel='stylesheet' href='css/index.css'
+  div#search-result.center-block style="width: 60%"
