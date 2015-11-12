@@ -83,7 +83,7 @@ module Oishinbo
     # @param [String]  Email
     # @param [String]  パスワード
     # @param [String]  確認用パスワード
-    # @param [Integer] 所属部署ID
+    # @param [Fixnum] 所属部署ID
     #
     # @see Oishinbo::App#index
     # @see Oishinbo::App#account_new
@@ -97,6 +97,7 @@ module Oishinbo
       end
 
       if account.save
+        session[:account_id] = account.id
         redirect '/'
       else
         flash[:errors] = account.errors.messages
@@ -134,7 +135,7 @@ module Oishinbo
 
     # ログアウト処理用メソッド
     #
-    # @param [Integer] アカウントID
+    # @param [Fixnum] アカウントID
     # 
     # @see Oishinbo::App#index
     post '/logout' do
@@ -142,6 +143,28 @@ module Oishinbo
 
       session.clear
       redirect '/'
+    end
+
+    # マイページ
+    #
+    # @see Oishinbo::App#mypage
+    get '/mypage' do
+      redirect '/login' unless session[:account_id]
+
+      wants = Want.find_by_account_id(session[:account_id])
+
+      @results = wants.each_with_object([]) do |want, arr|
+        arr << {
+          restaurant_name: want.restaurant.name,
+          restaurant_name_kana: want.restaurant.name_kana,
+          url: want.restaurant.url,
+          url_mobile: want.restaurant.url_mobile,
+          counts: want.count.counts,
+          display_flag: want.display_flag
+        }
+      end
+
+      slim :mypage
     end
 
     ### Restaurant API ###

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150910154302) do
+ActiveRecord::Schema.define(version: 20150913122430) do
 
   create_table "account_sections", force: :cascade do |t|
     t.integer  "account_id",               null: false
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20150910154302) do
   create_table "comments", force: :cascade do |t|
     t.integer  "account_id",                null: false
     t.integer  "restaurant_id",             null: false
-    t.text     "comments",                  null: false
+    t.text     "comment",                   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "deleted_flag",  default: 0, null: false
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20150910154302) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "deleted_flag",  default: 0, null: false
+    t.integer  "want_id"
   end
 
   create_table "restaurants", force: :cascade do |t|
@@ -79,11 +80,12 @@ ActiveRecord::Schema.define(version: 20150910154302) do
   end
 
   create_table "wants", force: :cascade do |t|
-    t.integer  "account_id",                null: false
-    t.integer  "restaurant_id",             null: false
+    t.integer  "account_id",                          null: false
+    t.integer  "restaurant_id",                       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "deleted_flag",  default: 0, null: false
+    t.integer  "deleted_flag",            default: 0, null: false
+    t.integer  "display_flag",  limit: 1, default: 1, null: false
   end
 
 end

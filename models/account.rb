@@ -6,6 +6,9 @@ module Oishinbo
 
     has_many :account_sections
     has_many :sections, through: :account_sections
+    has_many :comments
+    has_many :counts
+    has_many :wants
 
     validates :name, {
       presence: {message: '名前が入力されていません'},
@@ -55,6 +58,7 @@ module Oishinbo
       self.password_hash = @password 
     end
 
+    # TODO: 不必要なメソッドだったため削除
     # メールアドレスでユーザーを検索するメソッド
     # 
     # @param [String] Email
@@ -62,6 +66,24 @@ module Oishinbo
     # @return [Account] Accountオブジェクト
     def find_by_email(email)
       account = self.where(email).first
+    end
+
+    # アカウントIDでユーザーを検索するメソッド
+    #
+    # @param [[Fixnum] アカウントID
+    #
+    # @return [Account] Accountオブジェクト
+    def self.find_info_by_id(id)
+      info = self.includes(
+        :counts,
+        :wants,
+        :comments
+      ).joins(
+        counts: :restaurant,
+        wants: :restaurant,
+        comments: :restaurant,
+      )
+      .find(id)
     end
   end
 end
