@@ -1,7 +1,0 @@
-require_relative 'account'
-require_relative 'account_section'
-require_relative 'restaurant'
-require_relative 'section'
-require_relative 'comment'
-require_relative 'count'
-require_relative 'want'
