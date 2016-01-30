@@ -1,6 +1,29 @@
-# laravel
-vendor/
-.env
+# bundler
+.bundle/
+vendor/bundle
 
-# node.js
-node_modules/
+# log
+logs/*
+!logs/empty
+
+# temporary
+tmp/*
+!tmp/empty
+
+# bower
+bower_components/
+
+# library
+assets/lib/
+
+# rspec
+spec/examples.txt
+
+# database
+db/*.sqlite3
+
+# sass
+.sass-cache/
+
+# other
+.env
